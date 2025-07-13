@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Quick Tab Switcher",
+  "version": "1.0",
+  "description": "Switches to the previously focused tab using a keyboard shortcut.",
+  "permissions": ["storage", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Shift+Backquote"
+      },
+      "description": "Switch to previous tab"
+    }
+  }
+}
