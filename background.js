@@ -39,7 +39,7 @@ chrome.tabs.onRemoved.addListener(async (tabId) => {
 
 // Handle keyboard shortcut command
 chrome.commands.onCommand.addListener(async (command) => {
-  if (command === '_execute_action') {
+  if (command === 'switch-to-previous-tab') {
     try {
       // Get current active tab
       const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
