@@ -1,4 +1,4 @@
-# Quick Tab Switcher 🔄
+# Previous Tab Keyboard Shortcut 🔄
 
 *The extension Chrome should have built themselves... about a decade ago.*
 
@@ -44,7 +44,7 @@ So here we are, building workarounds for something that should have been built i
 The default shortcut is `Alt+Q`, but you can change it:
 
 1. Go to `chrome://extensions/shortcuts`
-2. Find "Quick Tab Switcher"
+2. Find "Previous Tab Keyboard Shortcut"
 3. Click the pencil icon next to "Switch to previous tab"
 4. Press your desired key combination
 
