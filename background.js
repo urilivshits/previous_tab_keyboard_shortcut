@@ -103,18 +103,21 @@ chrome.commands.onCommand.addListener(async (command) => {
       // Array to track tabs to remove from history
       const tabsToRemove = [];
       
-      // Iterate through history to find a valid tab
+      // Iterate through history to find a valid tab in the current window
       for (const tabId of history) {
         // Skip current tab
         if (tabId === activeTab.id) continue;
         
         try {
-          // Check if tab exists
-          await chrome.tabs.get(tabId);
+          // Check if tab exists and is in the same window
+          const tab = await chrome.tabs.get(tabId);
           
-          // Switch to valid tab
-          await chrome.tabs.update(tabId, { active: true });
-          break;
+          if (tab.windowId === activeTab.windowId) {
+            // Switch to valid tab in current window
+            await chrome.tabs.update(tabId, { active: true });
+            break;
+          }
+          // Tab exists but in different window - keep in history, just skip
           
         } catch (error) {
           // Tab doesn't exist, mark for removal

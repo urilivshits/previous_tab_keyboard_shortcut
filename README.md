@@ -13,8 +13,9 @@ Back in the day, awesome extensions like AutoControl could **override** Chrome's
 - 🎯 **Smart Tab Switching**: Jumps to your previously focused tab, not just the next one in line
 - 🧠 **Remembers Everything**: Maintains a history of your last 10 focused tabs
 - 🔄 **Handles Closed Tabs**: If your previous tab got closed, it tries the next one in history
-- 💾 **Survives Browser Restarts**: Your tab history persists even when you close Chrome
+- 🪟 **Multi-Window Support**: Works independently in each Chrome window
 - 🚫 **No Tab Loss**: Never loses track of your tabs (unlike some *other* extensions)
+- 🔄 **Graceful Restart Recovery**: Rebuilds history naturally after browser restart
 
 ## The Tragic Backstory 😭
 
@@ -51,6 +52,9 @@ The default shortcut is `Alt+Q`, but you can change it:
 
 *Note: Chrome won't let you use the backtick (\`) or `Ctrl+Tab` directly because... reasons.* 🤷‍♀️
 
+### Step 3: Start Using It!
+The extension learns your tab usage patterns as you browse. After a browser restart or opening a new window, you'll need to switch between tabs at least once before the "previous tab" functionality becomes available - this is normal behavior since there's no meaningful "previous tab" until you actually navigate!
+
 ## The `Ctrl+Tab` Workaround 🎩✨
 
 Missing `Ctrl+Tab`? Here's the magic trick that actually works:
@@ -81,10 +85,12 @@ Other tab-switching extensions in the Chrome Web Store:
 - ❌ Lose track when browser restarts
 - ❌ Don't support `Ctrl+Tab` (obviously)
 - ❌ Don't maintain proper tab history
+- ❌ Poor multi-window support
 
 This extension:
 - ✅ Handles all edge cases gracefully
-- ✅ Remembers everything across sessions
+- ✅ Rebuilds history intelligently after restart
+- ✅ Works independently in each Chrome window
 - ✅ Works with the PowerToys workaround for `Ctrl+Tab`
 - ✅ Actually works like you'd expect it to
 
