@@ -10,7 +10,7 @@
   "commands": {
     "switch-to-previous-tab": {
       "suggested_key": {
-        "default": "Ctrl+Insert"
+        "default": "Alt+Q"
       },
       "description": "Switch to previous tab"
     }
