@@ -13,6 +13,18 @@
         "default": "Alt+W"
       },
       "description": "Switch to previously focused tab"
+    },
+    "switch-to-left-tab": {
+      "suggested_key": {
+        "default": "Alt+Q"
+      },
+      "description": "Switch to the tab on the left"
+    },
+    "switch-to-right-tab": {
+      "suggested_key": {
+        "default": "Alt+E"
+      },
+      "description": "Switch to the tab on the right"
     }
   },
   "icons": {

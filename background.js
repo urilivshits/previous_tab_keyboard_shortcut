@@ -95,58 +95,119 @@ chrome.tabs.onRemoved.addListener(async (tabId) => {
 
 // Handle keyboard shortcut command
 chrome.commands.onCommand.addListener(async (command) => {
-  if (command === 'switch-to-previous-tab') {
-    // Block auto-repeat events - these typically fire every 30-100ms when holding keys
-    const currentTime = Date.now();
-    const timeSinceLast = currentTime - lastCommandTime;
-    
-    // Use 150ms threshold to reliably catch auto-repeat while allowing intentional presses
-    if (timeSinceLast < 150) {
-      return; // Skip auto-repeat events
-    }
-    
-    lastCommandTime = currentTime;
+  // Block auto-repeat events - these typically fire every 30-100ms when holding keys
+  const currentTime = Date.now();
+  const timeSinceLast = currentTime - lastCommandTime;
+  
+  // Use 150ms threshold to reliably catch auto-repeat while allowing intentional presses
+  if (timeSinceLast < 150) {
+    return; // Skip auto-repeat events
+  }
+  
+  lastCommandTime = currentTime;
 
-    try {
-      // Get current active tab
-      const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      
-      // Get tab history from storage
-      const { [HISTORY_KEY]: history = [] } = await chrome.storage.local.get(HISTORY_KEY);
-      
-      // Array to track tabs to remove from history
-      const tabsToRemove = [];
-      
-      // Iterate through history to find a valid tab in the current window
-      for (const tabId of history) {
-        // Skip current tab
-        if (tabId === activeTab.id) continue;
-        
-        try {
-          // Check if tab exists and is in the same window
-          const tab = await chrome.tabs.get(tabId);
-          
-          if (tab.windowId === activeTab.windowId) {
-            // Switch to valid tab in current window
-            await chrome.tabs.update(tabId, { active: true });
-            break;
-          }
-          // Tab exists but in different window - keep in history, just skip
-          
-        } catch (error) {
-          // Tab doesn't exist, mark for removal
-          tabsToRemove.push(tabId);
-        }
-      }
-      
-      // Remove invalid tabs from history if any
-      if (tabsToRemove.length > 0) {
-        const updatedHistory = history.filter(id => !tabsToRemove.includes(id));
-        await chrome.storage.local.set({ [HISTORY_KEY]: updatedHistory });
-      }
-      
-    } catch (error) {
-      console.error('Error in tab switching:', error);
+  try {
+    // Get current active tab
+    const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!activeTab) return;
+
+    switch (command) {
+      case 'switch-to-previous-tab':
+        await handleSwitchToPreviousTab(activeTab);
+        break;
+      case 'switch-to-left-tab':
+        await handleSwitchToLeftTab(activeTab);
+        break;
+      case 'switch-to-right-tab':
+        await handleSwitchToRightTab(activeTab);
+        break;
     }
+  } catch (error) {
+    console.error('Error in tab switching:', error);
   }
 });
+
+// Handle switching to the previously focused tab
+async function handleSwitchToPreviousTab(activeTab) {
+  try {
+    // Get tab history from storage
+    const { [HISTORY_KEY]: history = [] } = await chrome.storage.local.get(HISTORY_KEY);
+    
+    // Array to track tabs to remove from history
+    const tabsToRemove = [];
+    
+    // Iterate through history to find a valid tab in the current window
+    for (const tabId of history) {
+      // Skip current tab
+      if (tabId === activeTab.id) continue;
+      
+      try {
+        // Check if tab exists and is in the same window
+        const tab = await chrome.tabs.get(tabId);
+        
+        if (tab.windowId === activeTab.windowId) {
+          // Switch to valid tab in current window
+          await chrome.tabs.update(tabId, { active: true });
+          break;
+        }
+        // Tab exists but in different window - keep in history, just skip
+        
+      } catch (error) {
+        // Tab doesn't exist, mark for removal
+        tabsToRemove.push(tabId);
+      }
+    }
+    
+    // Remove invalid tabs from history if any
+    if (tabsToRemove.length > 0) {
+      const updatedHistory = history.filter(id => !tabsToRemove.includes(id));
+      await chrome.storage.local.set({ [HISTORY_KEY]: updatedHistory });
+    }
+  } catch (error) {
+    console.error('Error switching to previous tab:', error);
+  }
+}
+
+// Handle switching to the left tab
+async function handleSwitchToLeftTab(activeTab) {
+  try {
+    // Get all tabs in the current window, ordered by index
+    const tabs = await chrome.tabs.query({ windowId: activeTab.windowId });
+    tabs.sort((a, b) => a.index - b.index);
+    
+    // Find current tab index
+    const currentIndex = tabs.findIndex(tab => tab.id === activeTab.id);
+    
+    if (currentIndex === -1) return;
+    
+    // Calculate left tab index (wrap around to end if at beginning)
+    const leftIndex = currentIndex === 0 ? tabs.length - 1 : currentIndex - 1;
+    
+    // Switch to the left tab
+    await chrome.tabs.update(tabs[leftIndex].id, { active: true });
+  } catch (error) {
+    console.error('Error switching to left tab:', error);
+  }
+}
+
+// Handle switching to the right tab
+async function handleSwitchToRightTab(activeTab) {
+  try {
+    // Get all tabs in the current window, ordered by index
+    const tabs = await chrome.tabs.query({ windowId: activeTab.windowId });
+    tabs.sort((a, b) => a.index - b.index);
+    
+    // Find current tab index
+    const currentIndex = tabs.findIndex(tab => tab.id === activeTab.id);
+    
+    if (currentIndex === -1) return;
+    
+    // Calculate right tab index (wrap around to beginning if at end)
+    const rightIndex = currentIndex === tabs.length - 1 ? 0 : currentIndex + 1;
+    
+    // Switch to the right tab
+    await chrome.tabs.update(tabs[rightIndex].id, { active: true });
+  } catch (error) {
+    console.error('Error switching to right tab:', error);
+  }
+}

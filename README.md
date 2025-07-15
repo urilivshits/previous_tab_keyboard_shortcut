@@ -11,6 +11,8 @@ Back in the day, awesome extensions like AutoControl could **override** Chrome's
 ## Features That Actually Matter
 
 - 🎯 **Smart Tab Switching**: Jumps to your previously focused tab, not just the next one in line
+- ⬅️ **Left Tab Navigation**: Alt+Q to switch to the tab on the left (wraps around)
+- ➡️ **Right Tab Navigation**: Alt+E to switch to the tab on the right (wraps around)
 - 🧠 **Remembers Everything**: Maintains a history of your last 10 focused tabs
 - 🔄 **Handles Closed Tabs**: If your previous tab got closed, it tries the next one in history
 - 🪟 **Multi-Window Support**: Works independently in each Chrome window
@@ -40,13 +42,24 @@ So here we are, building workarounds for something that should have been built i
 3. Enable "Developer mode"
 4. Click "Load unpacked" and select the extension folder
 
-### Step 2: Customize the Keyboard Shortcut (Optional)
-The default shortcut is `Alt+W`, but you can change it:
+### Step 2: Set Up Keyboard Shortcuts
+The extension provides three commands with suggested shortcuts:
+
+- **Alt+W** - Switch to previously focused tab
+- **Alt+Q** - Switch to the tab on the left
+- **Alt+E** - Switch to the tab on the right
+
+**⚠️ Important Note:** Chrome may not automatically assign all suggested shortcuts due to conflicts with system shortcuts. You may need to manually configure them:
 
 1. Go to `chrome://extensions/shortcuts`
 2. Find "Previous Tab Keyboard Shortcut"
-3. Click the pencil icon next to "Switch to previous tab"
+3. Click the pencil icon next to any unassigned command
 4. Press your desired key combination
+
+**Common Issues:**
+- **Alt+E** may not auto-assign due to Chrome menu conflicts
+- **Alt+Q** usually assigns automatically
+- **Alt+W** usually assigns automatically
 
 **Supported Keys:** `A-Z`, `0-9`, `F1-F12`, `Comma`, `Period`, `Home`, `End`, `PageUp`, `PageDown`, `Space`, `Insert`, `Delete`, `Up`, `Down`, `Left`, `Right`, plus modifiers `Ctrl`, `Alt`, `Shift`
 
@@ -92,6 +105,7 @@ This extension:
 - ✅ Rebuilds history intelligently after restart
 - ✅ Works independently in each Chrome window
 - ✅ Works with the PowerToys workaround for `Ctrl+Tab`
+- ✅ Includes left/right tab navigation
 - ✅ Actually works like you'd expect it to
 
 ## Technical Stuff (For the Nerds) 🤓
@@ -101,7 +115,7 @@ This extension:
 - **Background:** Service worker (no more background pages, RIP)
 - **History Size:** 10 tabs (configurable in code)
 - **Persistence:** `chrome.storage.local`
-- **Default Shortcut:** `Alt+W`
+- **Default Shortcuts:** Alt+W, Alt+Q, Alt+E
 
 ## Contributing
 
