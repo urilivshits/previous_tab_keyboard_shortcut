@@ -133,8 +133,18 @@ async function handleSwitchToPreviousTab(activeTab) {
     // Get tab history from storage
     const { [HISTORY_KEY]: history = [] } = await chrome.storage.local.get(HISTORY_KEY);
     
+    // If history is empty, try to rebuild it from recent tab activations
+    if (history.length === 0) {
+      await rebuildHistoryFromRecentTabs(activeTab.windowId);
+      const { [HISTORY_KEY]: rebuiltHistory = [] } = await chrome.storage.local.get(HISTORY_KEY);
+      if (rebuiltHistory.length === 0) {
+        return; // No history available
+      }
+    }
+    
     // Array to track tabs to remove from history
     const tabsToRemove = [];
+    let switched = false;
     
     // Iterate through history to find a valid tab in the current window
     for (const tabId of history) {
@@ -148,6 +158,7 @@ async function handleSwitchToPreviousTab(activeTab) {
         if (tab.windowId === activeTab.windowId) {
           // Switch to valid tab in current window
           await chrome.tabs.update(tabId, { active: true });
+          switched = true;
           break;
         }
         // Tab exists but in different window - keep in history, just skip
@@ -163,8 +174,50 @@ async function handleSwitchToPreviousTab(activeTab) {
       const updatedHistory = history.filter(id => !tabsToRemove.includes(id));
       await chrome.storage.local.set({ [HISTORY_KEY]: updatedHistory });
     }
+    
+    // If no valid previous tab found and we have history, rebuild from scratch
+    if (!switched && history.length > 0) {
+      await validateAndRebuildHistory();
+      // Try one more time with rebuilt history
+      const { [HISTORY_KEY]: newHistory = [] } = await chrome.storage.local.get(HISTORY_KEY);
+      for (const tabId of newHistory) {
+        if (tabId === activeTab.id) continue;
+        try {
+          const tab = await chrome.tabs.get(tabId);
+          if (tab.windowId === activeTab.windowId) {
+            await chrome.tabs.update(tabId, { active: true });
+            break;
+          }
+        } catch (error) {
+          // Continue to next tab
+        }
+      }
+    }
   } catch (error) {
     console.error('Error switching to previous tab:', error);
+  }
+}
+
+// Rebuild history from recent tab activations when history is lost
+async function rebuildHistoryFromRecentTabs(windowId) {
+  try {
+    // Get all tabs in the window
+    const tabs = await chrome.tabs.query({ windowId });
+    
+    // Sort by last access time (most recent first)
+    tabs.sort((a, b) => (b.lastAccessed || 0) - (a.lastAccessed || 0));
+    
+    // Take the most recently accessed tabs (excluding the current one)
+    const recentTabs = tabs
+      .filter(tab => tab.active === false)
+      .slice(0, MAX_HISTORY_LENGTH)
+      .map(tab => tab.id);
+    
+    if (recentTabs.length > 0) {
+      await chrome.storage.local.set({ [HISTORY_KEY]: recentTabs });
+    }
+  } catch (error) {
+    console.error('Error rebuilding history from recent tabs:', error);
   }
 }
 
