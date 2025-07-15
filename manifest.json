@@ -10,7 +10,7 @@
   "commands": {
     "switch-to-previous-tab": {
       "suggested_key": {
-        "default": "Alt+Q"
+        "default": "Alt+W"
       },
       "description": "Switch to previously focused tab"
     }

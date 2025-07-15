@@ -2,6 +2,9 @@
 const HISTORY_KEY = 'tabHistory';
 const MAX_HISTORY_LENGTH = 10;
 
+// State management for preventing repeated shortcut execution
+let lastCommandTime = 0;
+
 // Initialize storage on extension install and validate on startup
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === 'install') {
@@ -93,6 +96,17 @@ chrome.tabs.onRemoved.addListener(async (tabId) => {
 // Handle keyboard shortcut command
 chrome.commands.onCommand.addListener(async (command) => {
   if (command === 'switch-to-previous-tab') {
+    // Block auto-repeat events - these typically fire every 30-100ms when holding keys
+    const currentTime = Date.now();
+    const timeSinceLast = currentTime - lastCommandTime;
+    
+    // Use 150ms threshold to reliably catch auto-repeat while allowing intentional presses
+    if (timeSinceLast < 150) {
+      return; // Skip auto-repeat events
+    }
+    
+    lastCommandTime = currentTime;
+
     try {
       // Get current active tab
       const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });

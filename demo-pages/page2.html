@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab 2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f39c12;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+        }
+        .content {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+        .use-case {
+            font-size: 2em;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in 0.2s forwards;
+        }
+        .description {
+            font-size: 1.4em;
+            max-width: 600px;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in 0.4s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Popup styles for Ctrl key hint */
+        .ctrl-popup {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ctrl-popup.show {
+            opacity: 1;
+        }
+        
+        .shortcut-key {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin: 0 2px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">🟡 TAB 2</div>
+    <div class="use-case">💻 Code & Development</div>
+    <div class="description">Toggle between your code editor and<br>documentation without breaking your flow</div>
+    
+    <div class="ctrl-popup" id="ctrlPopup">
+        <span class="shortcut-key">Alt+W</span> (<span class="shortcut-key">Ctrl+Tab</span>) to switch to previously focused tab
+    </div>
+
+    <script>
+        // Force reload when page comes into focus
+        window.addEventListener('focus', function() {
+            location.reload();
+        });
+        
+        // Also handle visibility change for better browser compatibility
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                location.reload();
+            }
+        });
+        
+        // Ctrl key popup functionality
+        const ctrlPopup = document.getElementById('ctrlPopup');
+        let ctrlPressed = false;
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Control' && !ctrlPressed) {
+                ctrlPressed = true;
+                ctrlPopup.classList.add('show');
+            }
+        });
+        
+        document.addEventListener('keyup', function(e) {
+            if (e.key === 'Control') {
+                ctrlPressed = false;
+                ctrlPopup.classList.remove('show');
+            }
+        });
+        
+        // Handle window blur to hide popup when switching tabs
+        window.addEventListener('blur', function() {
+            ctrlPressed = false;
+            ctrlPopup.classList.remove('show');
+        });
+    </script>
+</body>
+</html>

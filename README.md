@@ -41,7 +41,7 @@ So here we are, building workarounds for something that should have been built i
 4. Click "Load unpacked" and select the extension folder
 
 ### Step 2: Customize the Keyboard Shortcut (Optional)
-The default shortcut is `Alt+Q`, but you can change it:
+The default shortcut is `Alt+W`, but you can change it:
 
 1. Go to `chrome://extensions/shortcuts`
 2. Find "Previous Tab Keyboard Shortcut"
@@ -64,17 +64,17 @@ Missing `Ctrl+Tab`? Here's the magic trick that actually works:
 - [Windows PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/keyboard-manager) (free Microsoft utility)
 
 ### The Setup:
-1. **Install this extension** and note its keyboard shortcut (default: `Alt+Q`)
+1. **Install this extension** and note its keyboard shortcut (default: `Alt+W`)
 2. **Download and install PowerToys**
 3. **Open PowerToys Settings** → **Keyboard Manager**
 4. **Click "Remap a shortcut"**
 5. **Add a new mapping:**
    - **From:** `Ctrl+Tab`
-   - **To:** `Alt+Q` (or whatever you set the extension to)
+   - **To:** `Alt+W` (or whatever you set the extension to)
    - **Target Application:** chrome.exe (optional, but recommended)
 
-![PowerToys Keyboard Manager Setup](powertoys-setup.png)
-*Example: Mapping Ctrl+Tab to Alt+Q for chrome.exe*
+![PowerToys Keyboard Manager Setup](./demo-pages/powertoys-setup.png)
+*Example: Mapping Ctrl+Tab to Alt+W for chrome.exe*
 
 **BOOM!** 💥 Now `Ctrl+Tab` switches to previously focused tabs like it should, instead of Chrome's default useless tab cycling!
 
@@ -101,6 +101,7 @@ This extension:
 - **Background:** Service worker (no more background pages, RIP)
 - **History Size:** 10 tabs (configurable in code)
 - **Persistence:** `chrome.storage.local`
+- **Default Shortcut:** `Alt+W`
 
 ## Contributing
 
@@ -114,4 +115,4 @@ MIT License - because sharing is caring, and maybe Google will finally get the h
 
 ---
 
-*"In a world where Chrome removed useful shortcuts, one extension dared to bring them back... sort of."* 🎬 
+*"In a world where Chrome removed useful shortcuts, one extension dared to bring them back... sort of."* 🎬
