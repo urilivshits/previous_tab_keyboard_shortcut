@@ -17,7 +17,7 @@ Back in the day, awesome extensions like AutoControl could **override** Chrome's
 - 🔄 **Handles Closed Tabs**: If your previous tab got closed, it tries the next one in history
 - 🪟 **Multi-Window Support**: Works independently in each Chrome window
 - 🚫 **No Tab Loss**: Never loses track of your tabs (unlike some *other* extensions)
-- 🔄 **Graceful Restart Recovery**: Rebuilds history naturally after browser restart
+- 🔄 **Session Persistence**: Maintains tab history even when tabs go to sleep or are suspended
 - 🔄 **Idle Recovery**: Automatically rebuilds tab history when Chrome has been idle or tabs have been discarded by memory management
 - 🔄 **Cross-Window Sync**: Fixes tab history across all Chrome windows when rebuilding in one window
 
@@ -105,18 +105,103 @@ Missing `Ctrl+Tab`? Here's the magic trick that actually works:
 
 Other tab-switching extensions in the Chrome Web Store:
 - ❌ Don't handle closed tabs properly
-- ❌ Lose track when browser restarts
+- ❌ Tab history resets with browser restart
 - ❌ Don't support `Ctrl+Tab` (obviously)
 - ❌ Don't maintain proper tab history
 - ❌ Poor multi-window support
 
 This extension:
 - ✅ Handles all edge cases gracefully
-- ✅ Rebuilds history intelligently after restart
+- ✅ Maintains history during tab suspension and sleep
 - ✅ Works independently in each Chrome window
 - ✅ Works with the PowerToys workaround for `Ctrl+Tab`
 - ✅ Includes left/right tab navigation
 - ✅ Actually works like you'd expect it to
+
+## Frequently Asked Questions (Because People Will Ask) 🙋‍♀️
+
+### Installation & Setup (The Basics)
+
+**Q: How do I install this magical contraption?**  
+A: The usual Chrome extension dance: Download the files, go to `chrome://extensions/`, enable "Developer mode", click "Load unpacked", and select the extension folder. You know, the same routine you've done a hundred times because Google won't let us publish decent extensions easily anymore.
+
+**Q: The keyboard shortcuts aren't working! 😭**  
+A: Ah yes, the classic Chrome "we'll suggest shortcuts but not actually assign them" feature. Go to `chrome://extensions/shortcuts` and manually set them up:
+- **Alt+W** for "Switch to previous tab" (the good stuff)
+- **Alt+Q** for "Switch to left tab" 
+- **Alt+E** for "Switch to right tab"
+
+**Q: Can I use Ctrl+Tab instead of Alt+W?**  
+A: *Sweet summer child...* Chrome doesn't allow extensions to override built-in shortcuts like Ctrl+Tab anymore (thanks, Manifest V3!). But hey, that's exactly why we have the PowerToys workaround section above! 🎩✨
+
+### How This Wizardry Works
+
+**Q: How does the extension remember my tab history?**  
+A: It tracks which tabs you activate and stores this info locally in your browser (not in some sketchy cloud). Remembers your last 10 focused tabs because apparently that's enough for most humans' goldfish-like attention spans.
+
+**Q: What happens when I close a tab?**  
+A: The extension is smart enough to remove closed tabs from history and switch to the next available tab. Unlike Chrome's default behavior which would probably just crash or something. 🤷‍♀️
+
+**Q: Does this work across multiple Chrome windows?**  
+A: YES! Each window maintains its own independent tab history. Because apparently Google couldn't figure out this basic UX concept, but a random developer on the internet could. Go figure.
+
+**Q: Will this work after restarting Chrome?**  
+A: After a browser restart, the tab history gets reset and needs to be rebuilt (because Chrome doesn't persist extension state properly). You'll need to switch between tabs at least once before the magic starts working again. However, the extension maintains history even when tabs are suspended or go to sleep during normal use - so at least it's better than starting from scratch every time a tab blinks.
+
+### Privacy & Security (The Paranoid Stuff)
+
+**Q: Does this extension spy on me?**  
+A: **Absolutely not.** This extension doesn't collect, store, or transmit any personal data. All tab history stays on your device where it belongs. We're not Facebook, people.
+
+**Q: What permissions does this thing need?**  
+A: Just two, and for good reasons:
+- **Storage**: To save your tab history locally (shocking concept, I know)
+- **Tabs**: To manage tab switching and track active tabs (literally the entire point)
+
+**Q: Is my browsing history safe?**  
+A: Yep. The extension only tracks tab IDs (just numbers) and doesn't read or store any website content, URLs, or your embarrassing search history.
+
+### Troubleshooting (When Things Go Wrong)
+
+**Q: The extension stopped working after a Chrome update**  
+A: Because Google loves breaking things. Try this ritual:
+1. Go to `chrome://extensions/`
+2. Toggle the extension off and on (the classic "have you tried turning it off and on again?")
+3. Check if shortcuts need reassigning at `chrome://extensions/shortcuts`
+
+**Q: Alt+E isn't working (opens Chrome menu instead)**  
+A: Known conflict with Chrome's built-in menu. Either use a different shortcut in `chrome://extensions/shortcuts` or just stick with Alt+W for previous tab. Chrome gonna Chrome. 🤦‍♀️
+
+**Q: The extension doesn't remember tabs from before installation**  
+A: Well... yeah. It's not a time machine. The extension starts tracking from when you install it, not from the dawn of your browsing history.
+
+**Q: How do I completely reset this thing?**  
+A: Nuclear option: Uninstall and reinstall the extension. Less nuclear: Clear your browser's local storage for the extension (good luck finding that buried in Chrome's settings maze).
+
+### Compatibility (Will It Work With My Setup?)
+
+**Q: Does this work on Mac/Linux?**  
+A: Yep! Works on all platforms where Chrome runs. Though you might need to adjust keyboard shortcuts based on your OS (because apparently standardizing shortcuts across platforms is too much to ask).
+
+**Q: Will this work with other tab management extensions?**  
+A: Generally yes, but conflicts are possible. If things get weird, try disabling other tab-related extensions temporarily. It's like browser extension Thunderdome in there.
+
+**Q: Does this work in incognito mode?**  
+A: You'll need to manually enable it for incognito at `chrome://extensions/` by clicking "Details" and enabling "Allow in incognito." Because apparently privacy mode means "disable useful extensions by default." 🙄
+
+### Advanced Usage (For the Power Users)
+
+**Q: Can I change the keyboard shortcuts?**  
+A: Absolutely! Go to `chrome://extensions/shortcuts` and customize to your heart's content. Make it Alt+F4 if you're feeling dangerous.
+
+**Q: How many tabs does it remember?**  
+A: 10 tabs. Because if you need more than that, you might have a tab hoarding problem. (But it's configurable in the code if you're brave enough to dive in.)
+
+**Q: Can I see my tab history somewhere?**  
+A: The extension doesn't have a fancy UI for this (because who has time to build that?), but the data is stored locally and accessible through browser developer tools if you're feeling adventurous.
+
+**Q: Does this work with Chrome's tab groups?**  
+A: Yep! Works with tab groups because it doesn't care about Chrome's arbitrary organizational schemes. A tab is a tab is a tab.
 
 ## Technical Stuff (For the Nerds) 🤓
 

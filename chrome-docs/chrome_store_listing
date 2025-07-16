@@ -16,7 +16,7 @@ KEY FEATURES:
 🔄 Handles Closed Tabs - Tries next tab in history if previous was closed
 🪟 Multi-Window Support - Works independently in each Chrome window
 🚫 No Tab Loss - Never loses track of your tabs
-🔄 Graceful Restart Recovery - Rebuilds history after browser restart
+🔄 Session Persistence - Maintains tab history even when tabs go to sleep or are suspended
 
 SETUP INSTRUCTIONS:
 1. Install the extension from Chrome Web Store
@@ -30,7 +30,7 @@ Missing Ctrl+Tab? Use Windows PowerToys Keyboard Manager to remap Ctrl+Tab to Al
 WHY THIS EXTENSION IS BETTER:
 Unlike other tab switching extensions, this one:
 - Handles closed tabs properly
-- Rebuilds history after restarts
+- Maintains history during tab suspension
 - Works in multiple windows
 - Actually works like you'd expect
 

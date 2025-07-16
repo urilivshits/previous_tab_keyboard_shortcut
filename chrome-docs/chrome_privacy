@@ -1,0 +1,39 @@
+**Next Steps After Approval**:
+- Monitor user feedback and reviews
+- Plan feature updates based on user needs
+- Maintain and update based on Chrome API changes
+
+## 📊 Asset Summary
+- **Extension Package**: previous-tab-shortcut-v1.0.0.zip (2.17MB)
+- **Screenshots**: demo-pages/page1.png, page2.png, page3.png
+- **Video**: demo-pages/demo.mp4 (direct upload, no YouTube required)
+- **Description**: Optimized from README.md for store format
+
+---
+
+## 📋 Chrome Web Store Submission Details
+
+### Single Purpose Description
+This extension allows you to switch to your previously focused browser tab using a configurable keyboard shortcut (Alt+W by default). It enhances navigation efficiency by providing quick access to your most recent tabs across multiple windows, with history that maintains even when tabs go to sleep or are suspended.
+
+### Permission Justification
+- **storage**: We use the 'storage' permission to locally save your tab switching history on your device. This data is essential for the extension to remember the order of your tabs across browser sessions and is never transmitted or shared.
+- **tabs**: We use the 'tabs' permission to manage tab switching, identify the currently active tab, and listen for tab focus changes. This allows the extension to accurately track your navigation and switch to the correct previous tab when the keyboard shortcut is activated.
+
+### Remote Code Justification
+- **Are you using remote code?**: No, I am not using remote code.
+- **Justification**: This extension is fully self-contained and does not use any remote code. All functionality is executed locally from the files included in the extension package.
+
+### Data Usage
+- [ ] Personally identifiable information
+- [ ] Health information
+- [ ] Financial and payment information
+- [ ] Authentication information
+- [ ] Personal communications
+- [ ] Location
+- [ ] Web history
+- [ ] User activity
+- [ ] Website content
+
+### Privacy Policy URL
+`https://github.com/urilivshits/previous_tab_keyboard_shortcut/blob/main/chrome-docs/PRIVACY_POLICY.md` 

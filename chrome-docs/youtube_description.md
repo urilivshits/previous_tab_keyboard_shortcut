@@ -11,7 +11,7 @@ WHAT THIS EXTENSION DOES:
 ✅ Remembers your last 10 tabs
 ✅ Handles closed tabs gracefully
 ✅ Works across multiple Chrome windows
-✅ Survives browser restarts
+✅ Maintains history when tabs go to sleep
 
 THE BACKSTORY:
 Once upon a time, extensions like AutoControl could override Chrome's default Ctrl+Tab to make it actually useful. Then Chrome Manifest V3 happened and Google decided we can't have nice things anymore. This extension is our workaround for the basic functionality Chrome still refuses to build.
@@ -28,7 +28,7 @@ Want Ctrl+Tab to work properly? Use Windows PowerToys to remap Ctrl+Tab to Alt+W
 WHY THIS EXTENSION IS BETTER:
 Unlike other tab switching extensions, this one:
 - Handles closed tabs properly
-- Rebuilds history after restarts
+- Maintains history during tab suspension
 - Works in multiple windows
 - Actually works like you'd expect
 
