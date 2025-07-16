@@ -25,9 +25,7 @@ Back in the day, awesome extensions like AutoControl could **override** Chrome's
 
 Because reading about tab switching is about as exciting as watching paint dry, here's a demo that shows what this extension actually does:
 
-<video src="./demo-pages/demo.mp4" width="100%" controls>
-  <p>Your browser doesn't support embedded videos. You can <a href="./demo-pages/demo.mp4">download the demo video</a> instead.</p>
-</video>
+![Demo GIF](./demo-pages/demo.gif)
 
 *Watch as I frantically switch between tabs like a caffeinated squirrel, and the extension actually remembers where I was. Revolutionary, I know. Seriously Chrome, this is basic functionality we're having to hack together in 2025?!*
 
