@@ -25,7 +25,7 @@ Back in the day, awesome extensions like AutoControl could **override** Chrome's
 
 Because reading about tab switching is about as exciting as watching paint dry, here's a demo that shows what this extension actually does:
 
-![Demo GIF](./demo-pages/demo.gif)
+![Demo GIF](./assets/images/demo.gif)
 
 *Watch as I frantically switch between tabs like a caffeinated squirrel, and the extension actually remembers where I was. Revolutionary, I know. Seriously Chrome, this is basic functionality we're having to hack together in 2025?!*
 
@@ -96,7 +96,7 @@ Missing `Ctrl+Tab`? Here's the magic trick that actually works:
    - **To:** `Alt+W` (or whatever you set the extension to)
    - **Target Application:** chrome.exe (optional, but recommended)
 
-![PowerToys Keyboard Manager Setup](./demo-pages/powertoys-setup.png)
+![PowerToys Keyboard Manager Setup](./assets/images/powertoys-setup.png)
 *Example: Mapping Ctrl+Tab to Alt+W for chrome.exe*
 
 **BOOM!** 💥 Now `Ctrl+Tab` switches to previously focused tabs like it should, instead of Chrome's default useless tab cycling!
