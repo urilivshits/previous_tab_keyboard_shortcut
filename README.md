@@ -18,6 +18,15 @@ Back in the day, awesome extensions like AutoControl could **override** Chrome's
 - 🪟 **Multi-Window Support**: Works independently in each Chrome window
 - 🚫 **No Tab Loss**: Never loses track of your tabs (unlike some *other* extensions)
 - 🔄 **Graceful Restart Recovery**: Rebuilds history naturally after browser restart
+- 🔄 **Idle Recovery**: Automatically rebuilds tab history when Chrome has been idle or tabs have been discarded by memory management
+- 🔄 **Cross-Window Sync**: Fixes tab history across all Chrome windows when rebuilding in one window
+
+## See It In Action 🎬
+
+Because reading about tab switching is about as exciting as watching paint dry, here's a demo that shows what this extension actually does:
+
+![Demo Video](./demo-pages/demo.mp4)
+*Watch as I frantically switch between tabs like a caffeinated squirrel, and the extension actually remembers where I was. Revolutionary, I know. Seriously Chrome, this is basic functionality we're having to hack together in 2025?!*
 
 ## The Tragic Backstory 😭
 

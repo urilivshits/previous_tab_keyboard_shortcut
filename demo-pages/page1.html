@@ -26,8 +26,9 @@
             animation: fadeIn 0.5s ease-in forwards;
             position: absolute;
             top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 3%;
+            /* left: 50%; */
+            /* transform: translateX(-50%); */
             z-index: 1;
         }
         .use-case {
@@ -111,7 +112,10 @@
     </style>
 </head>
 <body>
-    <div class="content">🔵 TAB 1</div>
+    <div class="content">
+        <div style="font-size: 8rem; line-height: 1;">↑</div>
+        <div style="font-size: 4rem; font-weight: bold;">TAB 1</div>
+    </div>
     
     <div class="ctrl-popup" id="ctrlPopup">
         Press <span class="shortcut-key">Alt+W</span> to switch to previously focused tab
