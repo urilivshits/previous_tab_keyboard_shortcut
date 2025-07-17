@@ -36,7 +36,6 @@ Unlike other tab switching extensions, this one:
 
 PERMISSIONS NEEDED:
 - Storage (for tab history persistence)
-- Tabs (for tab management)
 
 This extension exists because Chrome removed the ability to override Ctrl+Tab in Manifest V3. We're just trying to make the best of a frustrating situation.
 

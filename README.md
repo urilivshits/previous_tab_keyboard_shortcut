@@ -153,10 +153,9 @@ A: After a browser restart, the tab history gets reset and needs to be rebuilt (
 **Q: Does this extension spy on me?**  
 A: **Absolutely not.** This extension doesn't collect, store, or transmit any personal data. All tab history stays on your device where it belongs. We're not Facebook, people.
 
-**Q: What permissions does this thing need?**  
-A: Just two, and for good reasons:
+**Q: What permissions does this thing need?**
+A: Just one, and for good reason:
 - **Storage**: To save your tab history locally (shocking concept, I know)
-- **Tabs**: To manage tab switching and track active tabs (literally the entire point)
 
 **Q: Is my browsing history safe?**  
 A: Yep. The extension only tracks tab IDs (just numbers) and doesn't read or store any website content, URLs, or your embarrassing search history.
@@ -206,7 +205,7 @@ A: Yep! Works with tab groups because it doesn't care about Chrome's arbitrary o
 ## Technical Stuff (For the Nerds) 🤓
 
 - **Manifest Version:** 3 (because we have no choice)
-- **Permissions:** `storage` (for persistence), `tabs` (for tab management)
+- **Permissions:** `storage` (for persistence)
 - **Background:** Service worker (no more background pages, RIP)
 - **History Size:** 10 tabs (configurable in code)
 - **Persistence:** `chrome.storage.local`
