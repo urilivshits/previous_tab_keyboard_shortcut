@@ -1,12 +1,9 @@
 Previous Tab Keyboard Shortcut 🔄
 
-The extension Chrome should have built themselves... about a decade ago.
+Switch to your previously active tab with simple keyboard shortcuts. No more "where was I?" moments.
 
 WHAT DOES THIS DO?
-Ever wanted Ctrl+Tab to switch to your previously focused tab instead of Chrome's default behavior of cycling through tabs like some sort of browser roulette? Yeah, we all have. This extension finally gives you that sanity-saving functionality with simple keyboard shortcuts. No more "where the heck was I?" moments.
-
-THE BACKSTORY:
-Once upon a time, extensions like AutoControl could override Chrome's default Ctrl+Tab to make it actually useful. Then Chrome Manifest V3 happened and Google decided we can't have nice things anymore. This extension is our workaround for the basic functionality Chrome still refuses to build.
+Ever wanted Ctrl+Tab to switch to your previously focused tab instead of Chrome's default cycling behavior? This extension gives you that sanity-saving functionality.
 
 KEY FEATURES:
 🎯 Smart Tab Switching - Alt+W to jump to your previously focused tab
@@ -15,28 +12,30 @@ KEY FEATURES:
 🧠 Remembers Everything - Maintains history of last 10 focused tabs
 🔄 Handles Closed Tabs - Tries next tab in history if previous was closed
 🪟 Multi-Window Support - Works independently in each Chrome window
-🚫 No Tab Loss - Never loses track of your tabs
-🔄 Session Persistence - Maintains tab history even when tabs go to sleep or are suspended
 
-SETUP INSTRUCTIONS:
-1. Install the extension from Chrome Web Store
-2. Go to chrome://extensions/shortcuts
-3. Configure your preferred shortcuts (default: Alt+W, Alt+Q, Alt+E)
-4. Start browsing - extension learns your patterns automatically
+DEFAULT SHORTCUTS:
+• Alt+W - Switch to previously active tab
+• Alt+Q - Switch to left tab
+• Alt+E - Switch to right tab
+
+⚠️ IMPORTANT: After installation, Chrome may not automatically enable the default shortcuts. To check/enable them:
+1. Go to chrome://extensions/shortcuts
+2. Find "Previous Tab Keyboard Shortcut" Extension
+3. Verify shortcuts are set to Alt+W, Alt+Q, Alt+E
+4. If not set, click "Edit" and assign the shortcuts manually
 
 CTRL+TAB WORKAROUND:
-Missing Ctrl+Tab? Use Windows PowerToys Keyboard Manager to remap Ctrl+Tab to Alt+W (or your chosen shortcut). This gives you the Ctrl+Tab behavior Chrome should have had all along.
+Want true Ctrl+Tab behavior? Use Windows PowerToys Keyboard Manager along with this extension:
 
-WHY THIS EXTENSION IS BETTER:
-Unlike other tab switching extensions, this one:
-- Handles closed tabs properly
-- Maintains history during tab suspension
-- Works in multiple windows
-- Actually works like you'd expect
+1. Download and install Microsoft PowerToys from the Microsoft Store
+2. Open PowerToys Settings
+3. Go to "Keyboard Manager" → "Remap a key"
+4. Click "Add key remapping"
+5. Set "Physical Key" to "Ctrl+Tab"
+6. Set "Mapped To" to "Alt+W"
+7. Click "OK" and restart Chrome
 
-PERMISSIONS NEEDED:
-- Storage (for tab history persistence)
+This gives you the Ctrl+Tab behavior Chrome should have had all along.
 
-This extension exists because Chrome removed the ability to override Ctrl+Tab in Manifest V3. We're just trying to make the best of a frustrating situation.
-
-Download now and get back the tab switching experience you deserve!
+WHY THIS EXISTS:
+Chrome removed the ability to override Ctrl+Tab in Manifest V3. This extension provides the functionality Chrome refuses to build.

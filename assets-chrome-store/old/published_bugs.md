@@ -1,0 +1,1 @@
+no default showrtcuts are set - if you have already something set for this shortcuts
