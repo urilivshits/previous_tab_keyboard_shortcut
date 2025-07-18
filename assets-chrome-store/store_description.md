@@ -39,3 +39,17 @@ This gives you the Ctrl+Tab behavior Chrome should have had all along.
 
 WHY THIS EXISTS:
 Chrome removed the ability to override Ctrl+Tab in Manifest V3. This extension provides the functionality Chrome refuses to build.
+
+---
+
+SUPPORT THIS PROJECT ❤️
+
+If you find this extension useful, please consider supporting it with a donation.
+
+Donation Addresses:
+• Bitcoin: `bc1q... (Your Bitcoin Address Here)`
+• Ethereum: `0x... (Your Ethereum Address Here)`
+• Monero: `4... (Your Monero Address Here)`
+• USDC (Polygon): `0x... (Your Polygon Address Here)`
+
+Thank you for supporting open-source software that actually works! 🎉

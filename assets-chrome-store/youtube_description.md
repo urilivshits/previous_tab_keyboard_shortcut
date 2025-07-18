@@ -51,4 +51,18 @@ Unlike other tab switching extensions, this one:
 
 Chrome should have built this feature years ago. Until they do, this extension has you covered.
 
+---
+
+SUPPORT THIS PROJECT ❤️
+
+If you find this extension useful, please consider supporting it with a donation.
+
+Donation Addresses:
+• Bitcoin: `bc1q... (Your Bitcoin Address Here)`
+• Ethereum: `0x... (Your Ethereum Address Here)`
+• Monero: `4... (Your Monero Address Here)`
+• USDC (Polygon): `0x... (Your Polygon Address Here)`
+
+Thank you for supporting open-source software that actually works! 🎉
+
 #ChromeExtension #Productivity #BrowserHacks #TabManagement #ChromeTips
