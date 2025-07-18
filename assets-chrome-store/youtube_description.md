@@ -2,7 +2,7 @@ Previous Tab Keyboard Shortcut Extension - Chrome's Missing Feature 🔄
 
 Switch to your previously active tab with simple keyboard shortcuts. No more "where was I?" moments.
 
-🔗 DOWNLOAD LINK: [Chrome Web Store Link]
+🔗 DOWNLOAD LINK: https://chromewebstore.google.com/detail/previous-tab-keyboard-sho/gkicedpdgfgamchnbmolmeaphphgejob
 
 WHAT THIS EXTENSION DOES:
 Ever wanted Ctrl+Tab to switch to your previously focused tab instead of Chrome's default cycling behavior? This extension gives you that sanity-saving functionality.
@@ -52,8 +52,3 @@ Unlike other tab switching extensions, this one:
 Chrome should have built this feature years ago. Until they do, this extension has you covered.
 
 #ChromeExtension #Productivity #BrowserHacks #TabManagement #ChromeTips
-
----
-💬 COMMENT: What's your biggest Chrome frustration? Let me know below!
-👍 LIKE if this helped you
-🔔 SUBSCRIBE for more Chrome productivity tips
