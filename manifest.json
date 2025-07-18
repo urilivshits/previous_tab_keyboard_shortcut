@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Previous Tab Keyboard Shortcut",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Switch to your previously focused tab with a shortcut (Alt+W by default). Works across windows and keeps tab history.",
   "permissions": ["storage"],
   "background": {
